@@ -1,20 +1,45 @@
-// hw38.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include "Application.h"
+#include "ApplicationTree.h"
 
-#include <iostream>
+int Application::globalCounter = 0;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	ApplicationTree a;
+    int choice;
+
+    do {
+        cout << "Menu:\n";
+        cout << "1. Add request\n";
+        cout << "2. Delete request\n";
+        cout << "3. Print requests by destination\n";
+        cout << "4. Count requests by date range and destination\n";
+        cout << "5. Print all requests\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            a.addApplication();
+            break;
+        case 2:
+            a.deleteApplication();
+            break;
+        case 3:
+            a.printByDestination();
+            break;
+        case 4:
+            a.amountByRange();
+            break;
+        case 5:
+            a.showAll();
+            break;
+        case 6:
+            cout << "Exiting...\n";
+            break;
+        default:
+            cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 6);
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
